@@ -34,12 +34,6 @@ void bmrChange(){
 
         minus_W+=(diet_I-(BMR+A));
 
-        if(abs(minus_W)>=W || BMR<=0){
-            cout<<"Danger Diet";
-            danger=true;
-            break;
-        }
-
         int x=diet_I-(BMR+A);
         if (abs(x) > T) {
             if (x < 0 && x % 2 != 0) //음수 계산 - 홀수인 음수
@@ -49,6 +43,14 @@ void bmrChange(){
         }
 
         //BMR+=floor((diet_I-(BMR+A))/2);
+
+        if(abs(minus_W)>=W || BMR<=0){
+            cout<<"Danger Diet";
+            danger=true;
+            break;
+        }
+
+
     }
 
 }
