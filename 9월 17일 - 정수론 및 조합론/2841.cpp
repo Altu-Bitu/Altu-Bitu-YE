@@ -22,7 +22,7 @@ int main() {
     // push 할떄마다 cnt++,
 
 
-    for (int i = 0; i < n; i++) {
+    while(n--) {
         int str_num, fret_num;
         cin >> str_num >> fret_num;
 
@@ -37,20 +37,19 @@ int main() {
                     s[str_num].pop();
                     cnt++;
                 }
-                //비엇거나, 더 작아진 경우에 push해줌
-                if ((!s[str_num].empty() && s[str_num].top() < fret_num) || s[str_num].empty()) {
-                    s[str_num].push(fret_num);
-                    cnt++;
-                }
-                //  같은 경우엔 아무것도 안해도 됨
 
+                //같은 경우엔 푸시하지 않음
+                if (!s[str_num].empty() && s[str_num].top() == fret_num)
+                    continue;
+
+                s[str_num].push(fret_num);
+                cnt++;
             }
+            //더 큰 플랫이 들어오면 푸시해줌
             else if (s[str_num].top() < fret_num) {
                 s[str_num].push(fret_num);
                 cnt++;
             }
-            else
-                continue;
 
         }
     }
